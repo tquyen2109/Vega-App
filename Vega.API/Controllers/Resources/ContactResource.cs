@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Vega.API.Models
+namespace  Vega.API.Controllers.Resources
 {
     public class ContactResource{
         [Required]

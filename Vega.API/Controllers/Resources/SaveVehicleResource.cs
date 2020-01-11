@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using Vega.API.Controllers.Resources;
 
 namespace Vega.API.Models
 {
-    public class VehicleResource
+    public class SaveVehicleResource
     {
         public int Id { get; set; }
         public int ModelId { get; set; }
@@ -14,7 +15,7 @@ namespace Vega.API.Models
         public ContactResource Contact { get; set; }
         // public int FeatureId { get; set; }
          public ICollection<int> Features { get; set; }
-         public VehicleResource()
+         public SaveVehicleResource()
          {
              Features = new Collection<int>();
          }
