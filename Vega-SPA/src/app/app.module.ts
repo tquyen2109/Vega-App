@@ -12,6 +12,7 @@ import { NavmenuComponent } from './navmenu/navmenu.component';
 import { VehicleService } from './services/vehicle.service';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
+import { PaginationComponent } from './shared/pagination.component';
 
 
 
@@ -22,7 +23,8 @@ import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
     VehicleFormComponent,
     NavmenuComponent,
     HomeComponent,
-    VehicleListComponent
+    VehicleListComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
