@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Vega.API.Controllers.Resources;
 using Vega.API.Core;
+using Vega.API.Core.Models;
 using Vega.API.Models;
 using Vega.API.Persistence;
 
@@ -90,9 +91,10 @@ namespace Vega.API.Controllers
             return Ok(vehicleResource);
         }
         [HttpGet]
-        public async Task<IEnumerable<VehicleResource>> GetVehicles()
+        public async Task<IEnumerable<VehicleResource>> GetVehicles(FilterResource FilterResource)
         {
-            var vehicle = await repository.GetVehicles();
+            var filter = mapper.Map<FilterResource,Filter>(FilterResource);
+            var vehicle = await repository.GetVehicles(filter);
             return mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleResource>>(vehicle);
            
         }

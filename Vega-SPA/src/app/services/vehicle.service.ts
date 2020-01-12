@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class VehicleService {
-  baseUrl ='http://localhost:5000';
+  private baseUrl ='http://localhost:5000';
   constructor(private http: HttpClient) { }
   getMakes(){
     return this.http.get(this.baseUrl + '/api/makes');
@@ -28,7 +28,17 @@ export class VehicleService {
   {
     return this.http.delete(this.baseUrl + '/api/vehicles/' + id);
   }
-  getVehicles(){
-    return this.http.get(this.baseUrl + '/api/vehicles/');
+  getVehicles(filter){
+    return this.http.get(this.baseUrl + '/api/vehicles/' + '?' + this.toQueryString(filter));
+  }
+
+  toQueryString(obj){
+    var parts = [];
+    for(var property in obj)  {
+      var value = obj[property];
+      if(value != null && value != undefined)
+        parts.push(encodeURIComponent(property)+ '=' + encodeURIComponent(value));
+    }
+    return parts.join('&');
   }
 }
