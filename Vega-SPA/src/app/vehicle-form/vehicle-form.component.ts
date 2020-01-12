@@ -1,4 +1,4 @@
-import { SaveVehicle, Vehicle } from './../Models/vehicle';
+import { SaveVehicle, Vehicle } from '../Models/vehicle';
 import { ToastyModule, ToastyService } from 'ng2-toasty';
 import { VehicleService } from '../services/vehicle.service';
 import { Component, OnInit } from '@angular/core';
@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/Observable/forkJoin';
 import * as _ from 'underscore';
 @Component({
-  selector: 'app-vehical-form',
-  templateUrl: './vehical-form.component.html',
-  styleUrls: ['./vehical-form.component.css']
+  selector: 'app-vehicle-form',
+  templateUrl: './vehicle-form.component.html',
+  styleUrls: ['./vehicle-form.component.css']
 })
-export class VehicalFormComponent implements OnInit {
+export class VehicleFormComponent implements OnInit {
 
   constructor(
               private route: ActivatedRoute, //to read route parameter

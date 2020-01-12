@@ -10,7 +10,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavmenuComponent } from './navmenu/navmenu.component';
 import { VehicleService } from './services/vehicle.service';
-import { VehicalFormComponent } from './vehical-form/vehical-form.component';
+import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
+import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 
 
 
@@ -18,9 +19,10 @@ import { VehicalFormComponent } from './vehical-form/vehical-form.component';
 @NgModule({
   declarations: [
     AppComponent,
-    VehicalFormComponent,
+    VehicleFormComponent,
     NavmenuComponent,
-    HomeComponent
+    HomeComponent,
+    VehicleListComponent
   ],
   imports: [
     BrowserModule,
@@ -29,10 +31,11 @@ import { VehicalFormComponent } from './vehical-form/vehical-form.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
+      {path: '', redirectTo:'vehicles', pathMatch:'full'},
       {path: 'home', component: HomeComponent},
-      {path: 'vehicles/new', component: VehicalFormComponent},
-      {path: 'vehicles/:id', component: VehicalFormComponent}
+      {path: 'vehicles/new', component: VehicleFormComponent},
+      {path: 'vehicles/:id', component: VehicleFormComponent},
+      {path: 'vehicles', component: VehicleListComponent}
 
       
     ])
