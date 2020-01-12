@@ -10,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class VehicleListComponent implements OnInit {
   vehicles: Vehicle[];
   makes: KeyValuePair[];
-  filter: any = {};
+  query: any = {};
+  columns = [
+    {title: 'Id', key: 'id'},
+    {title: 'Make', key: 'make', isSortable:true},
+    {title: 'Model', key: 'model', isSortable:true},
+    {title: 'Contact Name', key: 'contactName', isSortable:true}, 
+    {}
+  ];
   constructor(private vehicleService: VehicleService) { }
 
   ngOnInit() {
@@ -18,29 +25,38 @@ export class VehicleListComponent implements OnInit {
     this.vehicleService.getMakes()
       .subscribe((makes: KeyValuePair[]) => this.makes = makes);
   }
-  //Small dataset use client side filter
+  //Small dataset use client side query
   // onFilterChange(){
   //   var vehicles = this.allVehicles;
-  //   if(this.filter.makeId)
-  //     vehicles = vehicles.filter(v => v.make.id == this.filter.makeId);
+  //   if(this.query.makeId)
+  //     vehicles = vehicles.query(v => v.make.id == this.query.makeId);
 
-  //   if(this.filter.modelId)
-  //     vehicles = vehicles.filter(v => v.model.id == this.filter.modelId);
+  //   if(this.query.modelId)
+  //     vehicles = vehicles.query(v => v.model.id == this.query.modelId);
   //   this.vehicles = vehicles;
   // }
 
-  //Serverside filter
+  //Serverside query
   private populateVehicles(){
-    this.vehicleService.getVehicles(this.filter)
+    this.vehicleService.getVehicles(this.query)
     .subscribe((vehicles: Vehicle[]) => this.vehicles = vehicles);
   }
   onFilterChange(){
-    //this.filter.modelId = 2;
+    //this.query.modelId = 2;
     this.populateVehicles();
   }
   resetFilter() {
-    this.filter = {};
+    this.query = {};
     this.onFilterChange();
   }
-
+  sortBy(columnName){
+    if(this.query.sortBy == columnName){
+      this.query.isSortAscending = !this.query.isSortAscending;
+    }
+    else{
+      this.query.sortBy = columnName;
+      this.query.isSortAscending = true;
+    }
+    this.populateVehicles();
+  }
 }
