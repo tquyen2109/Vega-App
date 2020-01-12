@@ -34,11 +34,11 @@ namespace Vega.API.Mapping
                 .AfterMap((vr, v) => {
                     //Remove unselected feartures
                      var removedFeatures = v.Features.Where(f => !vr.Features.Contains(f.FeatureId));
-                    foreach(var f in removedFeatures)
+                    foreach(var f in removedFeatures.ToList())
                         v.Features.Remove(f);
                     //Add new features
                    var addedFeatures = vr.Features.Where(id => !v.Features.Any(f => f.FeatureId == id)).Select(id => new VehicleFeature{FeatureId = id });
-                    foreach (var f in addedFeatures)
+                    foreach (var f in addedFeatures.ToList())
                         v.Features.Add(f);
                 });
         }
