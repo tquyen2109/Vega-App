@@ -16,4 +16,7 @@ export class VehicleService {
   {
     return this.http.post(this.baseUrl + '/api/vehicles', vehicle);
   }
+  getVehicle(id){
+    return this.http.get(this.baseUrl + '/api/vehicles/' + id);
+  }
 }

@@ -1,6 +1,6 @@
 import { AppErrorHandler } from './app-error-handler';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -11,6 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { NavmenuComponent } from './navmenu/navmenu.component';
 import { VehicleService } from './services/vehicle.service';
 import { VehicalFormComponent } from './vehical-form/vehical-form.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { VehicalFormComponent } from './vehical-form/vehical-form.component';
     FormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
-      {path: 'vehicles/new', component: VehicalFormComponent}
+      {path: 'home', component: HomeComponent},
+      {path: 'vehicles/new', component: VehicalFormComponent},
+      {path: 'vehicles/:id', component: VehicalFormComponent}
+
       
     ])
   ],
