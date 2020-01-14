@@ -13,6 +13,7 @@ import { VehicleService } from './services/vehicle.service';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { PaginationComponent } from './shared/pagination.component';
+import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
 
 
 
@@ -24,7 +25,8 @@ import { PaginationComponent } from './shared/pagination.component';
     NavmenuComponent,
     HomeComponent,
     VehicleListComponent,
-    PaginationComponent
+    PaginationComponent,
+    ViewVehicleComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { PaginationComponent } from './shared/pagination.component';
       {path: '', redirectTo:'vehicles', pathMatch:'full'},
       {path: 'home', component: HomeComponent},
       {path: 'vehicles/new', component: VehicleFormComponent},
-      {path: 'vehicles/:id', component: VehicleFormComponent},
+      {path: 'vehicles/:id', component: ViewVehicleComponent},
+      {path: 'vehicles/edit/:id', component: VehicleFormComponent},
       {path: 'vehicles', component: VehicleListComponent}
 
       

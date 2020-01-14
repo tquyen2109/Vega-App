@@ -19,7 +19,7 @@ export class VehicleFormComponent implements OnInit {
               private vehicleService: VehicleService,
               private toastyService: ToastyService) { 
                 route.params.subscribe(p => {
-                  this.vehicle.id = +p['id']; // + is for converting to number
+                  this.vehicle.id = +p['id'] || 0; // + is for converting to number
                 });
               }
   makes: any[];
@@ -93,9 +93,8 @@ export class VehicleFormComponent implements OnInit {
   }
   submit()
   {
-    if(this.vehicle.id){
-      this.vehicleService.update(this.vehicle)
-        .subscribe(x => {
+    var result$ = (this.vehicle.id) ? this.vehicleService.update(this.vehicle) : this.vehicleService.create(this.vehicle);
+    result$.subscribe((vehicle: SaveVehicle) => {
           this.toastyService.success({
             title: 'Success',
             msg: 'The vehicle was successfully updated.',
@@ -103,22 +102,9 @@ export class VehicleFormComponent implements OnInit {
             showClose: true,
             timeout: 5000
           });
+          this.router.navigate(['/vehicles/', vehicle.id]);
         });
     }
-    else {
-    this.vehicleService.create(this.vehicle)
-      .subscribe(
-        x => console.log(x));
-    }
-  }
-  delete(){
-    if(confirm("Are you sure ?")){
-      this.vehicleService.delete(this.vehicle.id)
-        .subscribe(x => {
-          this.router.navigate(['/home']);
-        });
-    }
+  
   }
 
-  
-}
