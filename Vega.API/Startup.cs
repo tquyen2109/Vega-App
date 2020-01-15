@@ -17,6 +17,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Server.IISIntegration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Net.Http.Headers;
+using Vega.API.Core.Models;
 
 namespace Vega.API
 {
@@ -32,6 +33,7 @@ namespace Vega.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<PhotoSettings>(Configuration.GetSection("PhotoSettings"));
             services.AddControllers().AddNewtonsoftJson();
             services.AddScoped<IUnitOfWork,UnitOfWork>();
             services.AddScoped<IVehicleRepository,VehicleRepository>();

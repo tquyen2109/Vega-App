@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Vega.API.Migrations
 {
-    public partial class AddVehicle : Migration
+    public partial class AddPhoto : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,16 +32,35 @@ namespace Vega.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VehicleFeatures",
+                name: "Photos",
                 columns: table => new
                 {
-                    VehicalId = table.Column<int>(nullable: false),
-                    FeatureId = table.Column<int>(nullable: false),
-                    VehiclesId = table.Column<int>(nullable: true)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FileName = table.Column<string>(maxLength: 255, nullable: false),
+                    VehicleId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VehicleFeatures", x => new { x.VehicalId, x.FeatureId });
+                    table.PrimaryKey("PK_Photos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Photos_Vehicles_VehicleId",
+                        column: x => x.VehicleId,
+                        principalTable: "Vehicles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VehicleFeatures",
+                columns: table => new
+                {
+                    VehicleId = table.Column<int>(nullable: false),
+                    FeatureId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VehicleFeatures", x => new { x.VehicleId, x.FeatureId });
                     table.ForeignKey(
                         name: "FK_VehicleFeatures_Features_FeatureId",
                         column: x => x.FeatureId,
@@ -49,22 +68,22 @@ namespace Vega.API.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_VehicleFeatures_Vehicles_VehiclesId",
-                        column: x => x.VehiclesId,
+                        name: "FK_VehicleFeatures_Vehicles_VehicleId",
+                        column: x => x.VehicleId,
                         principalTable: "Vehicles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Photos_VehicleId",
+                table: "Photos",
+                column: "VehicleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_VehicleFeatures_FeatureId",
                 table: "VehicleFeatures",
                 column: "FeatureId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_VehicleFeatures_VehiclesId",
-                table: "VehicleFeatures",
-                column: "VehiclesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Vehicles_ModelId",
@@ -74,6 +93,9 @@ namespace Vega.API.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Photos");
+
             migrationBuilder.DropTable(
                 name: "VehicleFeatures");
 

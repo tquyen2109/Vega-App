@@ -16,6 +16,27 @@ namespace Vega.API.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.0");
 
+            modelBuilder.Entity("Vega.API.Core.Models.Photo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(255);
+
+                    b.Property<int?>("VehicleId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VehicleId");
+
+                    b.ToTable("Photos");
+                });
+
             modelBuilder.Entity("Vega.API.Models.Feature", b =>
                 {
                     b.Property<int>("Id")
@@ -107,22 +128,24 @@ namespace Vega.API.Migrations
 
             modelBuilder.Entity("Vega.API.Models.VehicleFeature", b =>
                 {
-                    b.Property<int>("VehicalId")
+                    b.Property<int>("VehicleId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("FeatureId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("VehiclesId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("VehicalId", "FeatureId");
+                    b.HasKey("VehicleId", "FeatureId");
 
                     b.HasIndex("FeatureId");
 
-                    b.HasIndex("VehiclesId");
-
                     b.ToTable("VehicleFeatures");
+                });
+
+            modelBuilder.Entity("Vega.API.Core.Models.Photo", b =>
+                {
+                    b.HasOne("Vega.API.Models.Vehicle", null)
+                        .WithMany("Photos")
+                        .HasForeignKey("VehicleId");
                 });
 
             modelBuilder.Entity("Vega.API.Models.Model", b =>
@@ -153,7 +176,9 @@ namespace Vega.API.Migrations
 
                     b.HasOne("Vega.API.Models.Vehicle", "Vehicles")
                         .WithMany("Features")
-                        .HasForeignKey("VehiclesId");
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
