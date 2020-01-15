@@ -14,6 +14,7 @@ import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { PaginationComponent } from './shared/pagination.component';
 import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
+import { PhotoService } from './services/photo.service';
 
 
 
@@ -47,7 +48,8 @@ import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
   ],
   providers: [
     {provide: ErrorHandler, useClass: AppErrorHandler},
-    VehicleService
+    VehicleService,
+    PhotoService
   ],
   bootstrap: [AppComponent]
 })
