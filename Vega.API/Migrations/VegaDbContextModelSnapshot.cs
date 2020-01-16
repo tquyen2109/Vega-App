@@ -27,7 +27,7 @@ namespace Vega.API.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(255);
 
-                    b.Property<int?>("VehicleId")
+                    b.Property<int>("VehicleId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -145,7 +145,9 @@ namespace Vega.API.Migrations
                 {
                     b.HasOne("Vega.API.Models.Vehicle", null)
                         .WithMany("Photos")
-                        .HasForeignKey("VehicleId");
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Vega.API.Models.Model", b =>

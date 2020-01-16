@@ -2,15 +2,16 @@
 <div>
 
   <!-- Nav tabs -->
+  <nav>
   <ul class="nav nav-tabs" role="tablist">
     <li  class="nav-item"><a class="nav-link active" href="#basic" aria-controls="basic" role="tab" data-toggle="tab">Vehicle</a></li>
     <li  class="nav-item"><a class="nav-link" href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Photos</a></li>
   </ul>
-
+</nav>
   <!-- Tab panes -->
   <div class="tab-content" *ngIf="vehicle">
     <!-- Vehicle tab -->
-    <div role="tabpanel" class="tab-pane fade show active" id="basic">
+    <div role="tabpanel" class="tab-pane fade show active" id="basic" role="tabpanel">
       <h2>Basics</h2>
       <ul>
         <li>Make: {{ vehicle.make.name }}</li>
@@ -33,12 +34,12 @@
         <button class="btn btn-danger" (click)="delete()">Delete</button>
         <a class="btn btn-default" [routerLink]="['/vehicles']">View All Vehicles</a>
       </p>
-      <input type="file" (change)="uploadPhoto()" #fileInput>
     </div>
     <!-- Photos tab -->
-    <div role="tabpanel" class="tab-pane fade" id="photos">
+    <div role="tabpanel" class="tab-pane fade" id="photos" role="tabpanel">
       <h2>Photos</h2>
-      
+      <input type="file" (change)="uploadPhoto()" #fileInput>
+    <img *ngFor="let photo of photos"  [src]="'Vega.API/wwwroot/495e591d-e839-4922-849e-fec07158e13a.jpg'" alt="img-thumbnail">
     </div>
   </div>
 </div>

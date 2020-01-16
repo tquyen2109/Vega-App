@@ -41,7 +41,8 @@ import { PhotoService } from './services/photo.service';
       {path: 'vehicles/new', component: VehicleFormComponent},
       {path: 'vehicles/:id', component: ViewVehicleComponent},
       {path: 'vehicles/edit/:id', component: VehicleFormComponent},
-      {path: 'vehicles', component: VehicleListComponent}
+      {path: 'vehicles', component: VehicleListComponent},
+      { path: '**', redirectTo: 'home' }
 
       
     ])

@@ -37,6 +37,7 @@ namespace Vega.API
             services.AddControllers().AddNewtonsoftJson();
             services.AddScoped<IUnitOfWork,UnitOfWork>();
             services.AddScoped<IVehicleRepository,VehicleRepository>();
+             services.AddScoped<IPhotoRepository,PhotoRepository>();
             services.AddAutoMapper();
             services.AddDbContext<VegaDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("Default")));
             services.AddControllers();

@@ -13,6 +13,7 @@ export class ViewVehicleComponent implements OnInit {
   @ViewChild('fileInput',{static: false}) fileInput: ElementRef;
   vehicle: any;
   vehicleId: number;
+  photos: any[];
   constructor(private route: ActivatedRoute,
               private router: Router,
               private toasty: ToastyService,
@@ -28,6 +29,8 @@ export class ViewVehicleComponent implements OnInit {
                }
 
   ngOnInit() {
+    this.photoService.getPhotos(this.vehicleId)
+      .subscribe((photos:any[]) => this.photos = photos);
     this.vehicleService.getVehicle(this.vehicleId)
       .subscribe(
         v => this.vehicle = v,
@@ -53,4 +56,5 @@ export class ViewVehicleComponent implements OnInit {
     this.photoService.upload(this.vehicleId, nativeElement.files[0])
       .subscribe(x => console.log(x));
   }
+  getPhotos
 }
