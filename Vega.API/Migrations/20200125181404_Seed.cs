@@ -2,9 +2,9 @@
 
 namespace Vega.API.Migrations
 {
-    public partial class SeedDatabase : Migration
+    public partial class Seed : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
+         protected override void Up(MigrationBuilder migrationBuilder)
         {
               migrationBuilder.Sql("INSERT INTO Makes (Name) VALUES ('Make1')");
             migrationBuilder.Sql("INSERT INTO Makes (Name) VALUES ('Make2')");

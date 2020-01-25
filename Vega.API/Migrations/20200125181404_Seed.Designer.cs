@@ -9,8 +9,8 @@ using Vega.API.Persistence;
 namespace Vega.API.Migrations
 {
     [DbContext(typeof(VegaDbContext))]
-    [Migration("20200116022859_InitDatabase")]
-    partial class InitDatabase
+    [Migration("20200125181404_Seed")]
+    partial class Seed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

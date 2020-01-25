@@ -1,5 +1,6 @@
+import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
 import { AppErrorHandler } from './app-error-handler';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, XhrFactory } from '@angular/common/http';
 import { NgModule, ErrorHandler, Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -49,8 +50,10 @@ import { PhotoService } from './services/photo.service';
   ],
   providers: [
     {provide: ErrorHandler, useClass: AppErrorHandler},
+ //   {provide: XhrFactory, useClass: BrowserXhrWithProgress},
     VehicleService,
-    PhotoService
+    PhotoService,
+ //   ProgressService
   ],
   bootstrap: [AppComponent]
 })

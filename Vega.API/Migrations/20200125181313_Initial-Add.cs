@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Vega.API.Migrations
 {
-    public partial class InitDatabase : Migration
+    public partial class InitialAdd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

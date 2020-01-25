@@ -39,7 +39,7 @@
     <div role="tabpanel" class="tab-pane fade" id="photos" role="tabpanel">
       <h2>Photos</h2>
       <input type="file" (change)="uploadPhoto()" #fileInput>
-    <img *ngFor="let photo of photos"  [src]="'Vega.API/wwwroot/495e591d-e839-4922-849e-fec07158e13a.jpg'" alt="img-thumbnail">
+    <img *ngFor="let photo of photos"  src='{{photo.fileName}}' alt="img-thumbnail">
     </div>
   </div>
 </div>

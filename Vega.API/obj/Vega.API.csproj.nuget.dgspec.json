@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Quyen Tran\\Vega\\VEga.API\\Vega.API.csproj": {}
+    "C:\\Users\\Quyen Tran\\Vega\\Vega.API\\Vega.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Quyen Tran\\Vega\\VEga.API\\Vega.API.csproj": {
+    "C:\\Users\\Quyen Tran\\Vega\\Vega.API\\Vega.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Quyen Tran\\Vega\\VEga.API\\Vega.API.csproj",
+        "projectUniqueName": "C:\\Users\\Quyen Tran\\Vega\\Vega.API\\Vega.API.csproj",
         "projectName": "Vega.API",
-        "projectPath": "C:\\Users\\Quyen Tran\\Vega\\VEga.API\\Vega.API.csproj",
+        "projectPath": "C:\\Users\\Quyen Tran\\Vega\\Vega.API\\Vega.API.csproj",
         "packagesPath": "C:\\Users\\Quyen Tran\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Quyen Tran\\Vega\\VEga.API\\obj\\",
+        "outputPath": "C:\\Users\\Quyen Tran\\Vega\\Vega.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
