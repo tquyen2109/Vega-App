@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Quyen Tran\\Vega\\Vega.API\\Vega.API.csproj": {}
+    "c:\\Users\\Quyen Tran\\Vega\\Vega.API\\Vega.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Quyen Tran\\Vega\\Vega.API\\Vega.API.csproj": {
+    "c:\\Users\\Quyen Tran\\Vega\\Vega.API\\Vega.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Quyen Tran\\Vega\\Vega.API\\Vega.API.csproj",
+        "projectUniqueName": "c:\\Users\\Quyen Tran\\Vega\\Vega.API\\Vega.API.csproj",
         "projectName": "Vega.API",
-        "projectPath": "C:\\Users\\Quyen Tran\\Vega\\Vega.API\\Vega.API.csproj",
+        "projectPath": "c:\\Users\\Quyen Tran\\Vega\\Vega.API\\Vega.API.csproj",
         "packagesPath": "C:\\Users\\Quyen Tran\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Quyen Tran\\Vega\\Vega.API\\obj\\",
+        "outputPath": "c:\\Users\\Quyen Tran\\Vega\\Vega.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -41,6 +41,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Auth0.Core": {
+              "target": "Package",
+              "version": "[6.5.6, )"
+            },
             "AutoMapper": {
               "target": "Package",
               "version": "[7.0.1, )"
@@ -48,6 +52,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[1.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.1, )"
             },
             "Microsoft.AspNetCore.Cors": {
               "target": "Package",

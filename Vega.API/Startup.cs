@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Server.IISIntegration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Net.Http.Headers;
 using Vega.API.Core.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Vega.API
 {
@@ -50,6 +51,15 @@ namespace Vega.API
     });
              services.AddMvc();
             services.AddAuthentication(IISDefaults.AuthenticationScheme);
+            services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(options =>
+        {
+            options.Authority = "https://dev-0mwgdf82.auth0.com/";
+            options.Audience = "https://api.vega.com";
+        });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,7 +77,7 @@ namespace Vega.API
 
        
           app.UseAuthorization();
-            
+            app.UseAuthentication();  
 
             app.UseEndpoints(endpoints =>
             {
