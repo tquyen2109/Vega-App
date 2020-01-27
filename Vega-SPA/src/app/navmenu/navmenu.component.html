@@ -7,6 +7,12 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
+          <a class="nav-link" (click)="auth.login()" *ngIf="!auth.loggedIn" >Login</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" (click)="auth.logout()" *ngIf="auth.loggedIn" >Logout </a>
+        </li>
+        <li class="nav-item active">
           <a class="nav-link" [routerLink]="['']" >Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">

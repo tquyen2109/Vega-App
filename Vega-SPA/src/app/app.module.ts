@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
 import { AppErrorHandler } from './app-error-handler';
 import { HttpClientModule, XhrFactory } from '@angular/common/http';
@@ -51,6 +52,7 @@ import { PhotoService } from './services/photo.service';
   providers: [
     {provide: ErrorHandler, useClass: AppErrorHandler},
  //   {provide: XhrFactory, useClass: BrowserXhrWithProgress},
+    AuthService,
     VehicleService,
     PhotoService,
  //   ProgressService
